@@ -17,8 +17,8 @@ spec:
       serviceAccountName: node-exporter
       containers:
         - name: prometheus-node-exporter
-          # Use the `quay.io/prometheus/node-exporter:v0.17.0` image
-          image: quay.io/prometheus/node-exporter:v0.17.0
+          # Use the `quay.io/prometheus/node-exporter:v0.18.1` image
+          image: quay.io/prometheus/node-exporter:v0.18.1
           imagePullPolicy: Always
           args:
             - --path.procfs=/host/proc
@@ -29,9 +29,9 @@ spec:
               containerPort: 9100
               hostPort: 9100
           # The `proc` and `sys` Node paths are mounted into the Pod at `/host/proc` and `/host/sys` respectively.
-          # To learn more about `proc` and `sys`, pseudo file systems that are used to provide information about the Node, 
-          # consult http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html from the Linux Documentation Project 
-          # and https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt from the Linux Kernel's documentation. 
+          # To learn more about `proc` and `sys`, pseudo file systems that are used to provide information about the Node,
+          # consult http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html from the Linux Documentation Project
+          # and https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt from the Linux Kernel's documentation.
           volumeMounts:
             - name: proc
               mountPath: /host/proc
@@ -47,7 +47,7 @@ spec:
             requests:
               cpu: 10m
               memory: 50Mi
-      # The `hostNetwork` and `hostPID` Pod Security parameters are set to `true` to allow `node-exporter` 
+      # The `hostNetwork` and `hostPID` Pod Security parameters are set to `true` to allow `node-exporter`
       # to  access the host process ID namespace and Node network namespace, which are required for scraping Node metrics
       hostNetwork: true
       hostPID: true
